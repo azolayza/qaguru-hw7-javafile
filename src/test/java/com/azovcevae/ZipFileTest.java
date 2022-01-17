@@ -17,10 +17,10 @@ public class ZipFileTest {
 
     @Test
     void ZipTest() throws Exception {
-        ZipFile zipFile = new ZipFile("/src/test/resources/zip-hw.zip");
+        ZipFile zipFile = new ZipFile("src/test/resources/files.zip");
 
         // Проверяем xls файл в архиве
-        ZipEntry XlsEntry = zipFile.getEntry("Clients.xlsx");
+        ZipEntry XlsEntry = zipFile.getEntry("clients.xlsx");
         try (InputStream stream = zipFile.getInputStream(XlsEntry)) {
             XLS parsed = new XLS(stream);
             assertThat(parsed.excel.getSheetAt(0).getRow(3).getCell(0).getStringCellValue())
